@@ -1,76 +1,78 @@
 # Fuelfinder
 
-Fuelfinder is a Python tool to scrape fuel prices from [fuelfinder.dk](https://www.fuelfinder.dk). It provides functionality to fetch current fuel prices while maintaining rate limiting and local caching, ensuring minimal requests to the server.
+<p align="center">
+  <img src=".github/assets/fuelfinder-flow.svg" width="100%" alt="Diagram of how fuelfinder works: it reads the price table on fuelfinder.dk, with a row per fuel company and a column per fuel type, stores it in a cache under ~/.cache/fuelfinder_cache for five minutes, and prints it as JSON keyed by fuel type and then company.">
+</p>
+
+Fuelfinder is a small command-line tool that reads the current Danish fuel prices from [fuelfinder.dk](https://www.fuelfinder.dk) and prints them as JSON. Results are cached on disk for five minutes, so running it repeatedly does not hammer the site.
+
+```sh
+uvx fuelfinder
+```
 
 ## Features
-- **Scrape Fuel Prices**: Get up-to-date fuel prices from the `fuelfinder.dk` website.
-- **Rate Limiting**: Ensures that requests to the server are made no more than once every 5 minutes using a persistent cache.
-- **Command-Line Interface (CLI)**: Built using Typer, allowing easy usage and configuration.
-- **Debug Logging**: Optional debug logging using Python's built-in logging for better transparency and troubleshooting.
-- **Pre-commit Setup**: Uses `ruff` to ensure the code meets quality and consistency standards.
+
+- **Scrape fuel prices**: reads the price table from `fuelfinder.dk/listprices.php`, one row per fuel company and one column per fuel type.
+- **Rate limiting**: requests go to the server at most once every 5 minutes, using a persistent cache.
+- **Command-line interface**: built with Typer.
+- **Debug logging**: optional, using Python's built-in logging.
+- **Pre-commit setup**: `ruff` keeps the code consistent.
 
 ## Installation
 
-To install Fuelfinder, clone the repository and use [uv](https://github.com/astral-sh/uv) to manage dependencies:
+Run it without installing, using [uv](https://github.com/astral-sh/uv):
 
 ```sh
-# Clone the repository
-git clone https://github.com/yourusername/fuelfinder.git
-cd fuelfinder
-
-# Install dependencies using uv
-uv sync
+uvx fuelfinder
 ```
+
+Or clone the repository and let uv manage the dependencies:
+
+```sh
+git clone https://github.com/jakob1379/fuelfinder.git
+cd fuelfinder
+uv sync
+uv run fuelfinder
+```
+
+Fuelfinder requires Python 3.12 or newer.
 
 ## Usage
-
-You can use the Fuelfinder CLI to fetch danish fuel prices directly from the command line:
-
-```sh
-# Run Fuelfinder
-uvx run fuelfinder
-```
-
-### Command-line Options
-- `--url`: The URL to fetch gas prices from (can also be set via the environment variable `FUELLIST_URL`).
-- `--debug`: Enable debug logging for more detailed output.
-
-For example:
 
 ```sh
 uvx fuelfinder --debug
 ```
 
-## Pre-commit Hooks
-This project uses [pre-commit](https://pre-commit.com/) to ensure code quality. The hooks used include:
-- **Ruff**: A fast Python linter and code formatter.
-- **Pre-commit Hooks**: Various checks, including trailing whitespace and YAML/JSON validation.
+The output is the price table as a JSON object keyed by column (fuel type) and then by row (fuel company).
 
-To set up pre-commit hooks:
-
-```sh
-pre-commit install
-```
-
-To run the hooks manually on all files:
-
-```sh
-pre-commit run --all-files
-```
+| Option    | Description                                                                         |
+| --------- | ----------------------------------------------------------------------------------- |
+| `--url`   | The URL to fetch fuel prices from. Can also be set with the `FUELLIST_URL` environment variable. Defaults to `https://www.fuelfinder.dk/listprices.php`. |
+| `--debug` | Enable debug logging for more detailed output.                                      |
 
 ## Configuration
 
-The caching for fuel prices is implemented using `diskcache` and is stored in `~/.cache/fuelfinder_cache` to persist across invocations. The default caching duration is 5 minutes.
+Caching uses `diskcache` and is stored in `~/.cache/fuelfinder_cache`, so it persists across invocations. A cached result is reused for 5 minutes before the page is fetched again.
 
 ## Development
 
-If you want to contribute to Fuelfinder, feel free to submit a pull request. Please make sure your code adheres to the following guidelines:
-- Ensure the code passes all pre-commit hooks.
-- Write clear and concise documentation for any new functionality.
+Contributions are welcome as pull requests. Please make sure your code passes all pre-commit hooks and document any new functionality.
+
+This project uses [pre-commit](https://pre-commit.com/) with:
+
+- **Ruff**: linting and formatting.
+- **pre-commit-hooks**: trailing whitespace, end-of-file, and YAML/JSON checks.
+
+```sh
+pre-commit install          # set up the hooks
+pre-commit run --all-files  # run them on every file
+```
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
+
 - [fuelfinder.dk](https://www.fuelfinder.dk) for providing the data source.
-- The authors of `ruff`, `typer`, `diskcache`, and other open-source projects used in this tool.
+- The authors of `ruff`, `typer`, `diskcache`, and the other open-source projects used in this tool.
