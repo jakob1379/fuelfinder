@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-labelledby="t">
+<title id="t">fuelfinder reads the fuelfinder.dk price table, caches it for five minutes and prints it as JSON</title>
+<style>
+:root{--bg:#e8edf1;--ink:#22303b;--muted:#5b6977;--pipe:#a6b3bf;--flow:#17806a;
+--sign:#1b252e;--signline:#2f3d49;--signtext:#c3cfd9;--led:#ffae1a;--ghost:#ffae1a;
+--term:#fbfcfd;--termline:#c9d3dc;--key:#17806a;--ringtrack:#d3dbe2}
+@media (prefers-color-scheme:dark){:root{--bg:#0f171e;--ink:#d9e2e9;--muted:#8d9ba8;
+--pipe:#34434f;--flow:#3fc79c;--sign:#080d12;--signline:#25323d;--signtext:#b4c1cc;
+--term:#16212a;--termline:#2a3844;--key:#5fd3ad;--ringtrack:#22303b}}
+svg{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.bg{fill:var(--bg)}
+.sign{fill:var(--sign);stroke:var(--signline);stroke-width:1.5}
+.st{fill:var(--signtext);font-size:13px}
+.co{fill:var(--signtext);font-size:15px;font-weight:600}
+.rule{stroke:var(--signline);stroke-width:1}
+.led{fill:var(--led)}
+.ghost{fill:var(--ghost);opacity:.09}
+.pipe{stroke:var(--pipe);stroke-width:2;stroke-dasharray:3 6;stroke-linecap:round}
+.pk{fill:var(--flow)}
+.track{fill:none;stroke:var(--ringtrack);stroke-width:9}
+.ring{fill:none;stroke:var(--flow);stroke-width:9;stroke-linecap:round;stroke-dasharray:314.16;
+transform:rotate(-90deg);transform-origin:470px 200px;animation:ttl 12s linear infinite}
+.big{fill:var(--ink);font-size:24px;font-weight:700;text-anchor:middle}
+.sm{fill:var(--muted);font-size:13px;text-anchor:middle}
+.term{fill:var(--term);stroke:var(--termline);stroke-width:1.5}
+.mono text,.mono{white-space:pre;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;fill:var(--ink)}
+.p{fill:var(--flow);font-weight:700}
+.k{fill:var(--key)}
+.ln{animation:reveal 12s infinite both}
+.scan{fill:var(--led);opacity:0;animation:scan 12s ease-in-out infinite}
+.pk1{opacity:0;animation:pk1 12s ease-in-out infinite}
+.pk2{opacity:0;animation:pk2 12s ease-in-out infinite}
+.hit{fill:var(--flow);opacity:0;transform-origin:470px 200px;animation:hit 12s ease-out infinite}
+@keyframes scan{0%{opacity:0;transform:translateY(0)}3%{opacity:.16}20%{opacity:.16;transform:translateY(150px)}23%,100%{opacity:0;transform:translateY(150px)}}
+@keyframes pk1{0%,20%{opacity:0;transform:translateX(0)}22%{opacity:1}30%{opacity:1;transform:translateX(62px)}32%,100%{opacity:0;transform:translateX(62px)}}
+@keyframes hit{0%,29%{opacity:0;transform:scale(.8)}31%{opacity:.25}40%,100%{opacity:0;transform:scale(1.25)}}
+@keyframes ttl{0%,30%{stroke-dashoffset:314.16}35%{stroke-dashoffset:0}92%{stroke-dashoffset:270}100%{stroke-dashoffset:314.16}}
+@keyframes pk2{0%,34%{opacity:0;transform:translateX(0)}36%{opacity:1}43%{opacity:1;transform:translateX(52px)}45%,100%{opacity:0;transform:translateX(52px)}}
+@keyframes reveal{0%,42%{opacity:0}46%,92%{opacity:1}97%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+.scan,.pk1,.pk2,.hit,.ln,.ring{animation:none}
+.ln{opacity:1}.ring{stroke-dashoffset:60}}
+</style>
+<defs><symbol id="d1" overflow="visible"><rect x="11.6" y="1.8" width="2.4" height="9.2" rx="1.1"/><rect x="11.6" y="13" width="2.4" height="9.2" rx="1.1"/></symbol><symbol id="d2" overflow="visible"><rect x="2.6" y="0" width="8.8" height="2.4" rx="1.1"/><rect x="11.6" y="1.8" width="2.4" height="9.2" rx="1.1"/><rect x="2.6" y="10.8" width="8.8" height="2.4" rx="1.1"/><rect x="0" y="13" width="2.4" height="9.2" rx="1.1"/><rect x="2.6" y="21.6" width="8.8" height="2.4" rx="1.1"/></symbol><symbol id="d5" overflow="visible"><rect x="2.6" y="0" width="8.8" height="2.4" rx="1.1"/><rect x="0" y="1.8" width="2.4" height="9.2" rx="1.1"/><rect x="2.6" y="10.8" width="8.8" height="2.4" rx="1.1"/><rect x="11.6" y="13" width="2.4" height="9.2" rx="1.1"/><rect x="2.6" y="21.6" width="8.8" height="2.4" rx="1.1"/></symbol><symbol id="d6" overflow="visible"><rect x="2.6" y="0" width="8.8" height="2.4" rx="1.1"/><rect x="0" y="1.8" width="2.4" height="9.2" rx="1.1"/><rect x="2.6" y="10.8" width="8.8" height="2.4" rx="1.1"/><rect x="0" y="13" width="2.4" height="9.2" rx="1.1"/><rect x="11.6" y="13" width="2.4" height="9.2" rx="1.1"/><rect x="2.6" y="21.6" width="8.8" height="2.4" rx="1.1"/></symbol><symbol id="d7" overflow="visible"><rect x="2.6" y="0" width="8.8" height="2.4" rx="1.1"/><rect x="11.6" y="1.8" width="2.4" height="9.2" rx="1.1"/><rect x="11.6" y="13" width="2.4" height="9.2" rx="1.1"/></symbol><symbol id="d9" overflow="visible"><rect x="2.6" y="0" width="8.8" height="2.4" rx="1.1"/><rect x="11.6" y="1.8" width="2.4" height="9.2" rx="1.1"/><rect x="11.6" y="13" width="2.4" height="9.2" rx="1.1"/><rect x="2.6" y="21.6" width="8.8" height="2.4" rx="1.1"/><rect x="0" y="1.8" width="2.4" height="9.2" rx="1.1"/><rect x="2.6" y="10.8" width="8.8" height="2.4" rx="1.1"/></symbol><symbol id="d8" overflow="visible"><rect x="2.6" y="0" width="8.8" height="2.4" rx="1.1"/><rect x="11.6" y="1.8" width="2.4" height="9.2" rx="1.1"/><rect x="11.6" y="13" width="2.4" height="9.2" rx="1.1"/><rect x="2.6" y="21.6" width="8.8" height="2.4" rx="1.1"/><rect x="0" y="13" width="2.4" height="9.2" rx="1.1"/><rect x="0" y="1.8" width="2.4" height="9.2" rx="1.1"/><rect x="2.6" y="10.8" width="8.8" height="2.4" rx="1.1"/></symbol><symbol id="ghost" overflow="visible"><g class="ghost"><use href="#d8"/><use href="#d8" x="18"/><use href="#d8" x="41"/><use href="#d8" x="59"/></g></symbol><clipPath id="sc"><rect x="38" y="42" width="306" height="316" rx="12"/></clipPath></defs>
+<rect class="bg" width="960" height="400"/>
+<rect class="sign" x="38" y="42" width="306" height="316" rx="12"/>
+<text class="st" x="56" y="74" font-weight="700" font-size="15">fuelfinder.dk</text>
+<text class="st" x="56" y="92" opacity=".7">listprices.php</text>
+<text class="st" x="160" y="110" opacity=".8">95 (E10)</text>
+<text class="st" x="256" y="110" opacity=".8">Diesel (B7)</text>
+<text class="co" x="56" y="149">Q8</text><g transform="translate(160 132) skewX(-7)"><use href="#ghost"/><g class="led"><use href="#d1" x="0"/><use href="#d5" x="18"/><use href="#d7" x="41"/><use href="#d9" x="59"/><rect x="35" y="20.5" width="3" height="4.5" rx="1"/></g></g><g transform="translate(256 132) skewX(-7)"><use href="#ghost"/><g class="led"><use href="#d1" x="0"/><use href="#d7" x="18"/><use href="#d2" x="41"/><use href="#d9" x="59"/><rect x="35" y="20.5" width="3" height="4.5" rx="1"/></g></g><text class="co" x="56" y="199">OK</text><g transform="translate(160 182) skewX(-7)"><use href="#ghost"/><g class="led"><use href="#d1" x="0"/><use href="#d5" x="18"/><use href="#d6" x="41"/><use href="#d9" x="59"/><rect x="35" y="20.5" width="3" height="4.5" rx="1"/></g></g><g transform="translate(256 182) skewX(-7)"><use href="#ghost"/><g class="led"><use href="#d1" x="0"/><use href="#d7" x="18"/><use href="#d1" x="41"/><use href="#d9" x="59"/><rect x="35" y="20.5" width="3" height="4.5" rx="1"/></g></g><line class="rule" x1="56" x2="326" y1="169" y2="169"/><text class="co" x="56" y="249">Lavpris</text><g transform="translate(160 232) skewX(-7)"><use href="#ghost"/><g class="led"><use href="#d1" x="0"/><use href="#d5" x="18"/><use href="#d6" x="41"/><use href="#d6" x="59"/><rect x="35" y="20.5" width="3" height="4.5" rx="1"/></g></g><g transform="translate(256 232) skewX(-7)"><use href="#ghost"/><g class="led"><use href="#d1" x="0"/><use href="#d7" x="18"/><use href="#d1" x="41"/><use href="#d6" x="59"/><rect x="35" y="20.5" width="3" height="4.5" rx="1"/></g></g><line class="rule" x1="56" x2="326" y1="219" y2="219"/><text class="co" x="56" y="299">Circle K</text><g transform="translate(160 282) skewX(-7)"><use href="#ghost"/><g class="led"><use href="#d1" x="0"/><use href="#d5" x="18"/><use href="#d7" x="41"/><use href="#d9" x="59"/><rect x="35" y="20.5" width="3" height="4.5" rx="1"/></g></g><g transform="translate(256 282) skewX(-7)"><use href="#ghost"/><g class="led"><use href="#d1" x="0"/><use href="#d7" x="18"/><use href="#d2" x="41"/><use href="#d9" x="59"/><rect x="35" y="20.5" width="3" height="4.5" rx="1"/></g></g><line class="rule" x1="56" x2="326" y1="269" y2="269"/>
+<g clip-path="url(#sc)"><rect class="scan" x="38" y="124" width="306" height="40"/></g>
+<line class="pipe" x1="352" y1="200" x2="404" y2="200"/>
+<line class="pipe" x1="536" y1="200" x2="582" y2="200"/>
+<circle class="pk pk1" cx="348" cy="200" r="6"/>
+<circle class="pk pk2" cx="532" cy="200" r="6"/>
+<circle class="hit" cx="470" cy="200" r="62"/>
+<circle class="track" cx="470" cy="200" r="50"/>
+<circle class="ring" cx="470" cy="200" r="50"/>
+<text class="big" x="470" y="200">5 min</text>
+<text class="sm" x="470" y="219">cache</text>
+<text class="sm" x="470" y="290">~/.cache/fuelfinder_cache</text>
+<text class="sm" x="470" y="310">refetches after 300 s</text>
+<rect class="term" x="594" y="72" width="330" height="256" rx="12"/>
+<g class="mono" xml:space="preserve"><text x="618" y="108"><tspan class="p">$</tspan> uvx fuelfinder</text><text x="618" y="141" class="ln" style="animation-delay:0.0s">{</text><text x="618" y="164" class="ln" style="animation-delay:0.25s">  <tspan class="k">"Blyfri 95 (E10)"</tspan>: {</text><text x="618" y="187" class="ln" style="animation-delay:0.5s">    <tspan class="k">"Q8"</tspan>: …, <tspan class="k">"OK"</tspan>: …,</text><text x="618" y="210" class="ln" style="animation-delay:0.75s">    <tspan class="k">"Lavpris"</tspan>: …, …</text><text x="618" y="233" class="ln" style="animation-delay:1.0s">  },</text><text x="618" y="256" class="ln" style="animation-delay:1.25s">  <tspan class="k">"Diesel (B7)"</tspan>: { … },</text><text x="618" y="279" class="ln" style="animation-delay:1.5s">  <tspan class="k">"Sidst opdateret"</tspan>: { … }</text><text x="618" y="302" class="ln" style="animation-delay:1.75s">}</text></g>
+</svg>
